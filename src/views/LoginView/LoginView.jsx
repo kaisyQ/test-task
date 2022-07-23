@@ -1,15 +1,26 @@
 import React, { useState } from "react"
-
+import { Navigate } from "react-router-dom"
+import { login } from "../../api/api"
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputField from "../../components/InputField/InputField"
 
-const LoginView = () => {
+const LoginView = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const submitClck = (e) => {
+    if (props.isAuth) return <Navigate to='/profile'/>
 
+    const submitClck = (e) => {
+        const isSuccssflLgn = login({ username, password })
+        if (isSuccssflLgn.isSuccessАuth) {
+            props.loginAC({ username, password })
+
+        } else {
+            alert('Invalid username or password')            
+        }
+        setUsername('')
+        setPassword('')
     }
     return <div className="view-wrapper">
         <Form style={{margin: '30px auto', width: '50%'}}>

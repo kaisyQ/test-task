@@ -14,12 +14,11 @@ export const login = (user) => {
         localStorage.setItem('userData', JSON.stringify(user))
         return { isSuccessАuth: true }
     } else {
-        localStorage.setItem('isAuth', false)
         return { isSuccessАuth: false }
     }
 }
 
 export const logout = () => {
-    localStorage.setItem('isAuth', false)
+    localStorage.clear()
 }
 

@@ -3,12 +3,12 @@ import React, { useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
-import Header from "./components/Header/Header"
+import HeaderContainer from './components/Header/HeaderContainer';
 
 import HomeView from "./views/HomeView/HomeView"
-import LoginView from "./views/LoginView/LoginView"
 import NewsViewContainer from './views/NewsView/NewsViewContainer'
 import ProfileViewContainer from './views/ProfileView/ProfileViewContainer'
+import LoginViewContainer from './views/LoginView/LoginViewContainer';
 import { checkAuth } from './api/api'
 import { connect } from 'react-redux'
 import { isAuthAC } from './redux/reducers/auth-reducer'
@@ -26,10 +26,10 @@ const App = (props) => {
 
     return <BrowserRouter>
         <div className="App">
-            <Header />
+            <HeaderContainer />
             <Routes>
                 <Route path='/' element={<HomeView />}/>
-                <Route path='/login' element={<LoginView />}/>
+                <Route path='/login' element={<LoginViewContainer />}/>
                 <Route path='/news' element={<NewsViewContainer />}/>
                 <Route path='/profile' element={<ProfileViewContainer />}/>
             </Routes>
