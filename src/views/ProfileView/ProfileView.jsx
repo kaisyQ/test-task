@@ -1,6 +1,7 @@
 import React from "react"
 
-const ProfileView = () => {
+const ProfileView = (props) => {
+    debugger
     return <>
         Profile
     </>

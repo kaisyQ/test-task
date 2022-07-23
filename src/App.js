@@ -1,17 +1,29 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from "react"
-import { BrowserRouter,Routes, Route } from "react-router-dom"
+import React, { useEffect } from "react"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
 import Header from "./components/Header/Header"
 
 import HomeView from "./views/HomeView/HomeView"
 import LoginView from "./views/LoginView/LoginView"
-import ProfileView from "./views/ProfileView/ProfileView"
+import NewsViewContainer from './views/NewsView/NewsViewContainer'
+import ProfileViewContainer from './views/ProfileView/ProfileViewContainer'
+import { checkAuth } from './api/api'
+import { connect } from 'react-redux'
+import { isAuthAC } from './redux/reducers/auth-reducer'
 
-import NewsViewContainer from './views/NewsView/NewsViewContainer';
+const App = (props) => {
+    useEffect(() => {
+        const isAuthObj = checkAuth()
+        if(isAuthObj.isAuth) {
+            props.checkisAuth(isAuthObj.isAuth, isAuthObj.userData)
+        } else {
+            props.checkisAuth(isAuthObj.isAuth, null)
+        }
 
-const App = () => {
+    })
+
     return <BrowserRouter>
         <div className="App">
             <Header />
@@ -19,10 +31,19 @@ const App = () => {
                 <Route path='/' element={<HomeView />}/>
                 <Route path='/login' element={<LoginView />}/>
                 <Route path='/news' element={<NewsViewContainer />}/>
-                <Route path='/profile' element={<ProfileView />}/>
+                <Route path='/profile' element={<ProfileViewContainer />}/>
             </Routes>
         </div>
     </BrowserRouter>
 }
 
-export default App
+const mapStateToProps = (state) => {
+    return {
+
+    }
+} 
+const mapDispatchToProps = {
+    checkisAuth: isAuthAC
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
