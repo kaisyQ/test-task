@@ -1,12 +1,13 @@
 import React from "react"
 
 import {connect} from 'react-redux'
+import { getNewItems } from "../../redux/selectors/news-selector"
 
 import NewsView from './NewsView'
 
 let mapStateToProps = (state) => {
     return {
-        items: state.news.items
+        items: getNewItems(state)
     }
 }
 
