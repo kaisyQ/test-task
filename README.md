@@ -1,9 +1,9 @@
 
 
 # Использованные библиотеки 
-1.react(UI, Локальное состояние(react-hooks))
-2.react-routet-dom(Для марштутизации)
-3.redux/react-redux(Для глобального состояния)
+1. react(UI, Локальное состояние(react-hooks))
+2. react-routet-dom(Для марштутизации)
+3. redux/react-redux(Для глобального состояния)
 4. bootstrap/react-bootstrap(Библиотека для стилей и стилизованных компонент)
 
 ##Директории
