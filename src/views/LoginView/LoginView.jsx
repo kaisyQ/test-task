@@ -4,10 +4,12 @@ import { login } from "../../api/api"
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputField from "../../components/InputField/InputField"
+import Modal from "../../components/Modal/Modal"
 
 const LoginView = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [isDisplayed, setIsDisplayed] = useState(false)
 
     if (props.isAuth) return <Navigate to='/profile'/>
 
@@ -17,7 +19,7 @@ const LoginView = (props) => {
             props.loginAC({ username, password })
 
         } else {
-            alert('Invalid username or password')            
+            setIsDisplayed(true)
         }
         setUsername('')
         setPassword('')
@@ -30,6 +32,7 @@ const LoginView = (props) => {
 
             <Button onClick={submitClck} variant="primary">Submit</Button>
         </Form>
+        <Modal message={'Invalid username or password'} title={'Error'} isDisplayed={isDisplayed} setIsDisplayed={setIsDisplayed} />
     </div>
 }
 
