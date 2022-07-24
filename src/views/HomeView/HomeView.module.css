@@ -1,0 +1,25 @@
+.homeContainer {
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://i.pinimg.com/originals/f3/f3/89/f3f389e48649f76598e877e774442c41.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+    padding-left: 30px;
+}
+
+.about {
+    max-width: 450px;
+    min-height: 300px;
+    background-color:#fff;
+    border-radius: 4px;
+}
+
+.about h2 {
+    padding-left: 15px;
+    padding-top: 20px;
+}
+.about p {
+    padding-left: 30px;
+    padding-top: 20px;
+}
